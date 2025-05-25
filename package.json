@@ -1,0 +1,32 @@
+{
+  "name": "back-end-leve",
+  "version": "1.0.0",
+  "description": "Projeto focando em desempenho",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "sem repositorio no momento"
+  },
+  "license": "ISC",
+  "author": "Tales Palma (SilverBack)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/init.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@fastify/static": "^8.1.1",
+    "dotenv": "^16.5.0",
+    "fastify": "^5.3.3",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "@fastify/type-provider-typebox": "^5.1.0",
+    "@types/node": "^22.15.18",
+    "@types/pg": "^8.15.2",
+    "prettier": "^3.5.3",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  }
+}
