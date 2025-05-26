@@ -11,6 +11,8 @@ export async function controller(router: FastifyInstance, service: Service) {
   })
 
 
+
+
   router.post('/register', async (request, reply) => {
     try {
       const newUser = request.body as User
@@ -24,16 +26,38 @@ export async function controller(router: FastifyInstance, service: Service) {
   });
 
 
-  router.get('/login', async (request, reply) => {
+  router.post('/login', async (request, reply) => {
     try {
       const result = await service.loginUserDatabase(request.body as User)
+      console.log("TESTE", result)
       return reply.code(201).send({ usuarios: result.rows })
 
     } catch (error) {
-      console.log(`ERROR EM RECUPERAR LISTA DE USERS ${error}`)
-      return reply.code(201).send({ error: error })
+      console.log(` Erro ao logar ${error}`)
+      return reply.code(404).send({ error: error })
     }
   })
+
+
+  interface Params {
+    id: number
+  }
+  router.get('/info/:id', async (request, reply) => {
+    try {
+      const { id }: Params = request.params as Params;
+      const result = await service.getInfosUser(id);
+
+      if (result == null) {
+        return {
+          Message: "Not found infos user"
+        }
+      }
+      return result.rows
+    } catch (error) {
+      return error
+    }
+  });
+
 
 
 }

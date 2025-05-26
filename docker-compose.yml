@@ -6,11 +6,11 @@ services:
     container_name: postgres_dev
     restart: always
     environment:
-      POSTGRES_USER: devTales
-      POSTGRES_PASSWORD: 123
-      POSTGRES_DB: devdb
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
     ports:
-      - "5432:5432"
+      - "${DB_PORT}:${DB_PORT}"
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
